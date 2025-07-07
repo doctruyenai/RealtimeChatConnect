@@ -194,7 +194,7 @@ setup_firewall() {
 }
 
 clone_project() {
-    log_info "Tải source code..."
+    log_info "Tải source code từ GitHub repository..."
     
     # Create project directory
     sudo mkdir -p /var/www
@@ -202,53 +202,30 @@ clone_project() {
     
     cd /var/www
     
-    # Clone or copy project (adjust this based on your repository)
+    # Backup existing directory if exists
     if [[ -d "$PROJECT_NAME" ]]; then
         log_warn "Thư mục $PROJECT_NAME đã tồn tại, đổi tên thành ${PROJECT_NAME}_backup_$(date +%Y%m%d_%H%M%S)"
         mv $PROJECT_NAME ${PROJECT_NAME}_backup_$(date +%Y%m%d_%H%M%S)
     fi
     
-    # Create project structure
-    mkdir -p $PROJECT_NAME
+    # Clone repository
+    log_info "Cloning repository từ GitHub..."
+    git clone https://github.com/doctruyenai/RealtimeChatConnect.git $PROJECT_NAME
+    
+    if [[ ! -d "$PROJECT_NAME" ]]; then
+        log_error "Không thể clone repository. Kiểm tra kết nối internet và repository URL."
+        exit 1
+    fi
+    
     cd $PROJECT_NAME
     
-    # Initialize package.json if not exists
+    # Verify package.json exists
     if [[ ! -f "package.json" ]]; then
-        log_warn "Tạo package.json mặc định - bạn cần upload source code sau"
-        cat > package.json << EOF
-{
-  "name": "chat-realtime",
-  "version": "1.0.0",
-  "description": "Hệ thống chat real-time",
-  "main": "server/index.js",
-  "scripts": {
-    "dev": "NODE_ENV=development tsx server/index.ts",
-    "build": "vite build && tsc server/*.ts --outDir dist/server --target es2020 --module commonjs --esModuleInterop --allowSyntheticDefaultImports",
-    "start": "NODE_ENV=production node dist/server/index.js",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate"
-  },
-  "dependencies": {
-    "express": "^4.18.0",
-    "drizzle-orm": "^0.29.0",
-    "@neondatabase/serverless": "^0.6.0",
-    "jsonwebtoken": "^9.0.0",
-    "zod": "^3.22.0",
-    "cors": "^2.8.5",
-    "helmet": "^7.0.0",
-    "compression": "^1.7.4"
-  },
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/express": "^4.17.0",
-    "@types/jsonwebtoken": "^9.0.0",
-    "typescript": "^5.0.0",
-    "tsx": "^4.0.0",
-    "drizzle-kit": "^0.20.0"
-  }
-}
-EOF
+        log_error "Repository không chứa package.json. Vui lòng kiểm tra repository."
+        exit 1
     fi
+    
+    log_info "Source code đã được tải thành công"
 }
 
 install_dependencies() {

@@ -153,8 +153,34 @@ create_docker_compose() {
     
     cd /opt/chat-realtime
     
-    # Copy or download docker-compose.yml and related files
-    # You would typically get these from your repository
+    # Clone repository
+    log_info "Cloning repository từ GitHub..."
+    git clone https://github.com/doctruyenai/RealtimeChatConnect.git /tmp/chat-realtime
+    
+    # Copy deployment files
+    if [[ -f "/tmp/chat-realtime/deploy/docker-compose.yml" ]]; then
+        cp /tmp/chat-realtime/deploy/docker-compose.yml .
+        cp /tmp/chat-realtime/deploy/Dockerfile .
+        
+        # Copy nginx configs if exist
+        if [[ -d "/tmp/chat-realtime/deploy/nginx" ]]; then
+            cp -r /tmp/chat-realtime/deploy/nginx .
+        fi
+        
+        # Copy database init scripts if exist
+        if [[ -d "/tmp/chat-realtime/deploy/db" ]]; then
+            cp -r /tmp/chat-realtime/deploy/db .
+        fi
+        
+        log_info "Docker configuration files đã được sao chép"
+    else
+        log_error "Không tìm thấy docker-compose.yml trong repository"
+        exit 1
+    fi
+    
+    # Copy source code
+    cp -r /tmp/chat-realtime/* .
+    rm -rf /tmp/chat-realtime
     
     log_info "Docker Compose configuration đã sẵn sàng"
 }

@@ -129,7 +129,7 @@ This is a real-time chat widget application designed to be embedded into any web
 
 ### One-Command Installation
 ```bash
-curl -fsSL https://raw.githubusercontent.com/your-repo/main/deploy/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/doctruyenai/RealtimeChatConnect/main/deploy/install.sh | bash
 ```
 
 ## Changelog

@@ -9,13 +9,13 @@ Hướng dẫn này giúp bạn cài đặt hệ thống chat real-time lên VPS
 ### Phương Án 1: Cài Đặt Trực Tiếp (Không Docker)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/your-repo/main/deploy/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/doctruyenai/RealtimeChatConnect/main/deploy/install.sh | bash
 ```
 
 ### Phương Án 2: Cài Đặt Với Docker
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/your-repo/main/deploy/docker-install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/doctruyenai/RealtimeChatConnect/main/deploy/docker-install.sh | bash
 ```
 
 ## 🔧 Yêu Cầu Tối Thiểu

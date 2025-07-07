@@ -12,13 +12,13 @@ Hệ thống chat real-time này được thiết kế để tích hợp vào b�
 ## 🚀 Cài Đặt Nhanh (1 Dòng Lệnh)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/your-repo/chat-realtime/main/deploy/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/doctruyenai/RealtimeChatConnect/main/deploy/install.sh | bash
 ```
 
 **Hoặc tải về và chạy:**
 
 ```bash
-wget https://raw.githubusercontent.com/your-repo/chat-realtime/main/deploy/install.sh
+wget https://raw.githubusercontent.com/doctruyenai/RealtimeChatConnect/main/deploy/install.sh
 chmod +x install.sh
 ./install.sh
 ```
@@ -73,7 +73,7 @@ chmod +x install.sh
 
 1. **Tải script cài đặt**
    ```bash
-   wget https://raw.githubusercontent.com/your-repo/chat-realtime/main/deploy/install.sh
+   wget https://raw.githubusercontent.com/doctruyenai/RealtimeChatConnect/main/deploy/install.sh
    chmod +x install.sh
    ```
 

@@ -1,0 +1,84 @@
+Bạn là một lập trình viên chuyên nghiệp. Hãy tạo một hệ thống chat real-time gồm frontend, backend và cơ sở dữ liệu với yêu cầu như sau:
+
+---
+🔹 MỤC TIÊU:
+Xây dựng ứng dụng chat real-time có thể tích hợp vào bất kỳ website nào thông qua đoạn mã nhúng JavaScript, với form điền thông tin trước khi chat và hệ thống quản trị dành cho 2 agent, trong đó mỗi phiên chat chỉ có duy nhất 1 agent được phép trả lời.
+
+---
+🔹 CHỨC NĂNG CHÍNH:
+
+Form thông tin trước khi chat:
+
+Trường mặc định: Họ tên, Số điện thoại, Địa chỉ, Nội dung.
+Cho phép định nghĩa các trường tùy chỉnh dễ dàng (dạng text, select, checkbox).
+Sau khi gửi form, khởi tạo cuộc trò chuyện và kết nối đến server.
+Widget chat:
+
+Giao diện gọn nhẹ, responsive, hiển thị trong góc dưới bên phải website.
+Tương thích mobile, hỗ trợ trạng thái "đang gõ...", online/offline agent.
+Tích hợp bằng 1 file JS duy nhất, dễ nhúng qua <script>.
+Real-time chat:
+
+Sử dụng Socket.IO để truyền nhận tin nhắn giữa khách và agent theo thời gian thực.
+Mỗi cuộc hội thoại được gán cho 1 agent duy nhất (luân phiên hoặc mặc định).
+Giao diện chat đơn giản, có avatar khách và agent.
+Dashboard Agent:
+
+Cho phép 2 agent đăng nhập (đơn giản bằng email/password).
+Hiển thị danh sách cuộc trò chuyện đang diễn ra và lịch sử.
+Cho phép gửi tin nhắn cho khách (nếu agent là người được gán).
+Tìm kiếm lịch sử theo tên, số điện thoại, thời gian.
+Hệ thống hiển thị "ai đang trả lời", chỉ 1 agent có quyền tương tác mỗi phiên.
+Quản lý và lưu trữ:
+
+Lưu toàn bộ tin nhắn, thông tin form và dữ liệu agent vào MongoDB.
+Dữ liệu được phân tách rõ ràng: conversations, messages, agents, form_fields.
+Có API REST để xem cuộc hội thoại và tin nhắn.
+Triển khai:
+
+Dự án được đóng gói bằng Docker, có thể chạy trên VPS Ubuntu.
+Bao gồm file docker-compose.yml chạy backend, frontend, MongoDB, Nginx reverse proxy.
+Có hướng dẫn đầy đủ để cài SSL bằng Certbot (Let’s Encrypt).
+Hệ thống sử dụng HTTPS và có bảo mật CORS, JWT cho agent, chặn truy cập trái phép.
+---
+🔹 YÊU CẦU KỸ THUẬT:
+
+Backend:
+
+Node.js (Express)
+Socket.IO
+MongoDB
+Xác thực bằng JWT
+REST API cho agent login, quản lý hội thoại
+Frontend (Widget & Dashboard):
+
+React + TailwindCSS
+Socket.IO Client
+Webpack để đóng gói widget thành 1 file duy nhất
+Dashboard dùng React Router, phân quyền rõ ràng
+Triển khai:
+
+Docker + Docker Compose
+Nginx làm reverse proxy
+Certbot cấu hình SSL
+---
+🔹 YÊU CẦU ĐẶC BIỆT:
+
+Viết mã rõ ràng, có comment giải thích.
+Tách biệt các module, dễ mở rộng.
+Tối ưu hiệu suất socket và lưu trữ dữ liệu.
+Đảm bảo khi mất kết nối có thể reconnect.
+Widget không gây xung đột với website chính (sử dụng Web Component hoặc Shadow DOM nếu cần).
+Toàn bộ giao diện dùng tiếng Việt.
+Đảm bảo đồng bộ giữa frontend, backend và database.
+---
+📦 ĐẦU RA MONG MUỐN:
+
+Source code đầy đủ gồm:
+/client-widget – mã nguồn React widget chat
+/client-dashboard – giao diện agent quản trị
+/server – backend API và Socket.IO
+/docker-compose.yml – cho toàn hệ thống
+Hướng dẫn triển khai trên VPS Ubuntu.
+Một file JS duy nhất để nhúng vào website.
+Bắt đầu viết mã ngay với cấu trúc rõ ràng, dùng các công nghệ nêu trên. Hãy đảm bảo code sẵn sàng chạy trong môi trường production.

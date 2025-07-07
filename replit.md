@@ -106,8 +106,35 @@ This is a real-time chat widget application designed to be embedded into any web
 - **Real-time Scaling**: Socket.IO adapter ready for multi-instance deployment
 - **CDN Ready**: Static widget assets can be served from CDN
 
+## Deployment Strategy
+
+### Current Setup
+- **Development**: Vite dev server with Express backend
+- **Build Process**: Vite builds client, esbuild bundles server
+- **Database**: Neon PostgreSQL with environment-based configuration
+- **Static Assets**: Chat widget served as standalone JavaScript file
+
+### Production Deployment
+- **Method 1**: Direct installation script (`deploy/install.sh`)
+  - Ubuntu 20.04/22.04 LTS
+  - Node.js 20 + PM2 process manager
+  - PostgreSQL + Nginx reverse proxy
+  - Automatic SSL with Let's Encrypt
+  - Monitoring and backup automation
+
+- **Method 2**: Docker deployment (`deploy/docker-compose.yml`)
+  - Containerized services: App, PostgreSQL, Redis, Nginx
+  - Production-ready with health checks
+  - Scalable and portable
+
+### One-Command Installation
+```bash
+curl -fsSL https://raw.githubusercontent.com/your-repo/main/deploy/install.sh | bash
+```
+
 ## Changelog
 - July 07, 2025. Initial setup
+- July 07, 2025. Added complete deployment automation with install scripts and Docker support
 
 ## User Preferences
 

@@ -118,6 +118,7 @@ export class MemStorage implements IStorage {
     const agent: Agent = {
       ...insertAgent,
       id: this.currentAgentId++,
+      isOnline: insertAgent.isOnline ?? false,
       createdAt: new Date(),
     };
     this.agents.set(agent.id, agent);
@@ -146,6 +147,11 @@ export class MemStorage implements IStorage {
     const conversation: Conversation = {
       ...insertConversation,
       id: this.currentConversationId++,
+      content: insertConversation.content ?? null,
+      status: insertConversation.status ?? "active",
+      customerAddress: insertConversation.customerAddress ?? null,
+      requestType: insertConversation.requestType ?? null,
+      assignedAgentId: insertConversation.assignedAgentId ?? null,
       createdAt: now,
       updatedAt: now,
     };
@@ -213,13 +219,16 @@ export class MemStorage implements IStorage {
   // Form field methods
   async getAllFormFields(): Promise<FormField[]> {
     return Array.from(this.formFields.values())
-      .sort((a, b) => a.order - b.order);
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   }
 
   async createFormField(insertField: InsertFormField): Promise<FormField> {
     const field: FormField = {
       ...insertField,
       id: this.currentFormFieldId++,
+      order: insertField.order ?? 0,
+      required: insertField.required ?? false,
+      options: insertField.options ?? null,
     };
     this.formFields.set(field.id, field);
     return field;

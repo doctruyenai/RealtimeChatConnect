@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Chat Widget</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f9fafb;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 32px;
+        }
+        .section {
+            margin-bottom: 32px;
+        }
+        .code-block {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        .button {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 0 8px 8px 0;
+            font-size: 14px;
+        }
+        .button:hover {
+            background: #1976D2;
+        }
+        .controls {
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 6px;
+            margin: 16px 0;
+        }
+        .control-group {
+            margin-bottom: 12px;
+        }
+        label {
+            display: inline-block;
+            width: 120px;
+            font-weight: 500;
+            color: #374151;
+        }
+        input, select {
+            padding: 6px 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Demo Chat Widget</h1>
+        <p class="subtitle">Trang demo để test chat widget có thể nhúng vào bất kỳ website nào</p>
+
+        <div class="section">
+            <h2>🎮 Điều khiển Widget</h2>
+            <div class="controls">
+                <div class="control-group">
+                    <label>Màu chủ đạo:</label>
+                    <input type="color" id="primaryColor" value="#2196F3">
+                </div>
+                <div class="control-group">
+                    <label>Vị trí:</label>
+                    <select id="position">
+                        <option value="bottom-right">Góc dưới phải</option>
+                        <option value="bottom-left">Góc dưới trái</option>
+                        <option value="top-right">Góc trên phải</option>
+                        <option value="top-left">Góc trên trái</option>
+                    </select>
+                </div>
+                <div style="margin-top: 16px;">
+                    <button class="button" onclick="updateWidget()">Cập nhật</button>
+                    <button class="button" onclick="ChatWidget.open()">Mở chat</button>
+                    <button class="button" onclick="ChatWidget.close()">Đóng chat</button>
+                    <button class="button" onclick="ChatWidget.toggle()">Toggle</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Mã nhúng</h2>
+            <p>Sao chép và dán đoạn mã sau vào website của bạn để tích hợp chat widget:</p>
+            
+            <div class="code-block">
+&lt;!-- Chat Widget Script --&gt;
+&lt;script&gt;
+  // Cấu hình widget (tùy chọn)
+  window.ChatWidgetConfig = {
+    apiUrl: 'http://localhost:5000/api',
+    primaryColor: '#2196F3',
+    position: 'bottom-right',
+    websiteId: 'your-website-id'
+  };
+&lt;/script&gt;
+&lt;script src="http://localhost:5000/chat-widget.js" async&gt;&lt;/script&gt;
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚙️ Cấu hình Widget</h2>
+            <p>Các tùy chọn có thể cấu hình cho widget:</p>
+            <ul>
+                <li><strong>apiUrl:</strong> URL của server API (mặc định: http://localhost:5000/api)</li>
+                <li><strong>primaryColor:</strong> Màu chủ đạo của widget (mặc định: #2196F3)</li>
+                <li><strong>position:</strong> Vị trí hiển thị widget (bottom-right, bottom-left, top-right, top-left)</li>
+                <li><strong>websiteId:</strong> ID định danh website (để phân biệt các nguồn chat)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Tính năng</h2>
+            <ul>
+                <li>✅ Form thông tin trước khi chat với các trường tùy chỉnh</li>
+                <li>✅ Giao diện chat responsive, tương thích mobile</li>
+                <li>✅ Real-time messaging (sử dụng polling cho MVP)</li>
+                <li>✅ Hiển thị trạng thái online/offline của agent</li>
+                <li>✅ Tích hợp dễ dàng bằng 1 file JavaScript</li>
+                <li>✅ Không xung đột với website hiện tại</li>
+                <li>✅ Giao diện tiếng Việt đầy đủ</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📱 Test Mobile</h2>
+            <p>Widget được thiết kế responsive và hoạt động tốt trên cả desktop và mobile. Bạn có thể test bằng cách:</p>
+            <ul>
+                <li>Thay đổi kích thước cửa sổ trình duyệt</li>
+                <li>Sử dụng Developer Tools để mô phỏng thiết bị di động</li>
+                <li>Truy cập trên điện thoại thực tế</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔗 API Endpoints</h2>
+            <p>Widget sử dụng các API endpoints sau:</p>
+            <div class="code-block">
+POST /api/conversations          - Tạo cuộc hội thoại mới
+GET  /api/conversations/:id/messages - Lấy tin nhắn
+POST /api/conversations/:id/messages - Gửi tin nhắn khách hàng
+GET  /api/form-fields            - Lấy cấu hình form fields
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Widget Script -->
+    <script>
+        // Cấu hình widget
+        window.ChatWidgetConfig = {
+            apiUrl: 'http://localhost:5000/api',
+            primaryColor: '#2196F3',
+            position: 'bottom-right',
+            websiteId: 'demo-website'
+        };
+        
+        // Load widget script
+        const script = document.createElement('script');
+        script.src = 'http://localhost:5000/chat-widget.js';
+        script.async = true;
+        document.head.appendChild(script);
+
+        // Utility functions for demo
+        function updateWidget() {
+            const primaryColor = document.getElementById('primaryColor').value;
+            const position = document.getElementById('position').value;
+            
+            // Update config
+            window.ChatWidgetConfig.primaryColor = primaryColor;
+            window.ChatWidgetConfig.position = position;
+            
+            // Remove existing widget
+            const existingWidget = document.getElementById('chat-widget');
+            if (existingWidget) {
+                existingWidget.remove();
+            }
+            
+            // Reload widget with new config
+            ChatWidget.init(window.ChatWidgetConfig);
+            
+            alert('Widget đã được cập nhật!');
+        }
+    </script>
+</body>
+</html>

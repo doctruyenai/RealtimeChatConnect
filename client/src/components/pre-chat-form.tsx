@@ -33,16 +33,16 @@ export default function PreChatForm({ onStartChat }: PreChatFormProps) {
     },
     onSuccess: (conversation: Conversation) => {
       toast({
-        title: "Cuộc trò chuyện đã được tạo",
-        description: "Bạn đã được kết nối với agent hỗ trợ",
+        title: "Cuoc tro chuyen da duoc tao",
+        description: "Ban da duoc ket noi voi agent ho tro",
       });
       onStartChat(conversation);
     },
     onError: (error: any) => {
       toast({
         variant: "destructive",
-        title: "Lỗi tạo cuộc trò chuyện",
-        description: error.message || "Vui lòng thử lại sau",
+        title: "Loi tao cuoc tro chuyen",
+        description: error.message || "Vui long thu lai sau",
       });
     },
   });
@@ -57,8 +57,8 @@ export default function PreChatForm({ onStartChat }: PreChatFormProps) {
     if (!formData.customerName.trim()) {
       toast({
         variant: "destructive",
-        title: "Lỗi",
-        description: "Vui lòng nhập họ tên",
+        title: "Loi",
+        description: "Vui long nhap ho ten",
       });
       return;
     }
@@ -66,8 +66,8 @@ export default function PreChatForm({ onStartChat }: PreChatFormProps) {
     if (!formData.customerPhone.trim()) {
       toast({
         variant: "destructive", 
-        title: "Lỗi",
-        description: "Vui lòng nhập số điện thoại",
+        title: "Loi",
+        description: "Vui long nhap so dien thoai",
       });
       return;
     }
@@ -75,8 +75,8 @@ export default function PreChatForm({ onStartChat }: PreChatFormProps) {
     if (!agreedToTerms) {
       toast({
         variant: "destructive",
-        title: "Lỗi", 
-        description: "Vui lòng đồng ý với điều khoản sử dụng",
+        title: "Loi", 
+        description: "Vui long dong y voi dieu khoan su dung",
       });
       return;
     }
@@ -90,23 +90,23 @@ export default function PreChatForm({ onStartChat }: PreChatFormProps) {
         <div className="w-12 h-12 bg-blue-100 rounded-full mx-auto mb-3 flex items-center justify-center">
           <MessageCircle className="h-6 w-6 text-blue-600" />
         </div>
-        <h3 className="text-lg font-semibold text-gray-900">Bắt đầu cuộc trò chuyện</h3>
+        <h3 className="text-lg font-semibold text-gray-900">Bat dau cuoc tro chuyen</h3>
         <p className="text-sm text-gray-600 mt-1">
-          Vui lòng cung cấp thông tin để được hỗ trợ tốt nhất
+          Vui long cung cap thong tin de duoc ho tro tot nhat
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <Label htmlFor="name" className="text-sm font-medium text-gray-700">
-            Họ và tên *
+            Ho va ten *
           </Label>
           <Input
             id="name"
             type="text"
             value={formData.customerName}
             onChange={(e) => handleInputChange("customerName", e.target.value)}
-            placeholder="Nhập họ và tên"
+            placeholder="Nhap ho va ten"
             className="mt-1"
             required
           />
@@ -114,14 +114,14 @@ export default function PreChatForm({ onStartChat }: PreChatFormProps) {
 
         <div>
           <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
-            Số điện thoại *
+            So dien thoai *
           </Label>
           <Input
             id="phone"
             type="tel"
             value={formData.customerPhone}
             onChange={(e) => handleInputChange("customerPhone", e.target.value)}
-            placeholder="Nhập số điện thoại"
+            placeholder="Nhap so dien thoai"
             className="mt-1"
             required
           />
@@ -129,43 +129,43 @@ export default function PreChatForm({ onStartChat }: PreChatFormProps) {
 
         <div>
           <Label htmlFor="address" className="text-sm font-medium text-gray-700">
-            Địa chỉ
+            Dia chi
           </Label>
           <Input
             id="address"
             type="text"
             value={formData.customerAddress}
             onChange={(e) => handleInputChange("customerAddress", e.target.value)}
-            placeholder="Nhập địa chỉ"
+            placeholder="Nhap dia chi"
             className="mt-1"
           />
         </div>
 
         <div>
           <Label htmlFor="requestType" className="text-sm font-medium text-gray-700">
-            Loại yêu cầu
+            Loai yeu cau
           </Label>
           <Select value={formData.requestType} onValueChange={(value) => handleInputChange("requestType", value)}>
             <SelectTrigger className="mt-1">
-              <SelectValue placeholder="Chọn loại yêu cầu" />
+              <SelectValue placeholder="Chon loai yeu cau" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="support">Hỗ trợ kỹ thuật</SelectItem>
-              <SelectItem value="sales">Tư vấn bán hàng</SelectItem>
-              <SelectItem value="complaint">Khiếu nại</SelectItem>
+              <SelectItem value="support">Ho tro ky thuat</SelectItem>
+              <SelectItem value="sales">Tu van ban hang</SelectItem>
+              <SelectItem value="complaint">Khieu nai</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         <div>
           <Label htmlFor="content" className="text-sm font-medium text-gray-700">
-            Nội dung
+            Noi dung
           </Label>
           <Textarea
             id="content"
             value={formData.content}
             onChange={(e) => handleInputChange("content", e.target.value)}
-            placeholder="Mô tả vấn đề của bạn..."
+            placeholder="Mo ta van de cua ban..."
             className="mt-1 resize-none"
             rows={3}
           />
@@ -180,13 +180,13 @@ export default function PreChatForm({ onStartChat }: PreChatFormProps) {
             required
           />
           <Label htmlFor="terms" className="ml-2 text-sm text-gray-600">
-            Tôi đồng ý với{" "}
+            Toi dong y voi{" "}
             <a href="#" className="text-blue-600 hover:underline">
-              điều khoản sử dụng
+              dieu khoan su dung
             </a>{" "}
-            và{" "}
+            va{" "}
             <a href="#" className="text-blue-600 hover:underline">
-              chính sách bảo mật
+              chinh sach bao mat
             </a>
           </Label>
         </div>
@@ -198,14 +198,14 @@ export default function PreChatForm({ onStartChat }: PreChatFormProps) {
             className="flex-1"
             onClick={() => window.parent.postMessage("closeChat", "*")}
           >
-            Hủy
+            Huy
           </Button>
           <Button
             type="submit"
             className="flex-1 bg-blue-600 hover:bg-blue-700"
             disabled={createConversationMutation.isPending}
           >
-            {createConversationMutation.isPending ? "Đang tạo..." : "Bắt đầu chat"}
+            {createConversationMutation.isPending ? "Dang tao..." : "Bat dau chat"}
           </Button>
         </div>
       </form>

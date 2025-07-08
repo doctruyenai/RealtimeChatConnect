@@ -48,10 +48,10 @@
                 </svg>
               </div>
               <div>
-                <div style="font-weight: 500; font-size: 14px;">Hỗ trợ khách hàng</div>
+                <div style="font-weight: 500; font-size: 14px;">Ho tro khach hang</div>
                 <div style="font-size: 12px; opacity: 0.8; display: flex; align-items: center;">
                   <div style="width: 8px; height: 8px; background: #4caf50; border-radius: 50%; margin-right: 4px;"></div>
-                  Đang hoạt động
+                  Dang hoat dong
                 </div>
               </div>
             </div>
@@ -83,45 +83,45 @@
                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                   </svg>
                 </div>
-                <h3 style="font-size: 18px; font-weight: 600; color: #1f2937; margin: 0 0 4px;">Bắt đầu cuộc trò chuyện</h3>
-                <p style="font-size: 14px; color: #6b7280; margin: 0;">Vui lòng cung cấp thông tin để được hỗ trợ tốt nhất</p>
+                <h3 style="font-size: 18px; font-weight: 600; color: #1f2937; margin: 0 0 4px;">Bat dau cuoc tro chuyen</h3>
+                <p style="font-size: 14px; color: #6b7280; margin: 0;">Vui long cung cap thong tin de duoc ho tro tot nhat</p>
               </div>
 
               <form id="contact-form" style="display: flex; flex-direction: column; gap: 16px;">
                 <div>
-                  <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Họ và tên *</label>
-                  <input type="text" id="customer-name" required style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none;" placeholder="Nhập họ và tên">
+                  <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Ho va ten *</label>
+                  <input type="text" id="customer-name" required style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none;" placeholder="Nhap ho va ten">
                 </div>
                 <div>
-                  <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Số điện thoại *</label>
-                  <input type="tel" id="customer-phone" required style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none;" placeholder="Nhập số điện thoại">
+                  <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">So dien thoai *</label>
+                  <input type="tel" id="customer-phone" required style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none;" placeholder="Nhap so dien thoai">
                 </div>
                 <div>
-                  <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Địa chỉ</label>
-                  <input type="text" id="customer-address" style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none;" placeholder="Nhập địa chỉ">
+                  <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Dia chi</label>
+                  <input type="text" id="customer-address" style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none;" placeholder="Nhap dia chi">
                 </div>
                 <div>
-                  <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Loại yêu cầu</label>
+                  <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Loai yeu cau</label>
                   <select id="request-type" style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none; background: white;">
-                    <option value="">Chọn loại yêu cầu</option>
-                    <option value="support">Hỗ trợ kỹ thuật</option>
-                    <option value="sales">Tư vấn bán hàng</option>
-                    <option value="complaint">Khiếu nại</option>
+                    <option value="">Chon loai yeu cau</option>
+                    <option value="support">Ho tro ky thuat</option>
+                    <option value="sales">Tu van ban hang</option>
+                    <option value="complaint">Khieu nai</option>
                   </select>
                 </div>
                 <div>
-                  <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Nội dung</label>
-                  <textarea id="customer-content" rows="3" style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none; resize: none;" placeholder="Mô tả vấn đề của bạn..."></textarea>
+                  <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Noi dung</label>
+                  <textarea id="customer-content" rows="3" style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none; resize: none;" placeholder="Mo ta van de cua ban..."></textarea>
                 </div>
                 <div style="display: flex; align-items: flex-start; gap: 8px;">
                   <input type="checkbox" id="agree-terms" required style="margin-top: 4px;">
                   <label for="agree-terms" style="font-size: 12px; color: #6b7280;">
-                    Tôi đồng ý với <a href="#" style="color: ${config.primaryColor};">điều khoản sử dụng</a> và <a href="#" style="color: ${config.primaryColor};">chính sách bảo mật</a>
+                    Toi dong y voi <a href="#" style="color: ${config.primaryColor};">dieu khoan su dung</a> va <a href="#" style="color: ${config.primaryColor};">chinh sach bao mat</a>
                   </label>
                 </div>
                 <div style="display: flex; gap: 12px; margin-top: 16px;">
-                  <button type="button" id="cancel-btn" style="flex: 1; padding: 8px 16px; border: 1px solid #d1d5db; background: white; color: #374151; border-radius: 6px; cursor: pointer; font-size: 14px;">Hủy</button>
-                  <button type="submit" id="start-chat-btn" style="flex: 1; padding: 8px 16px; background: ${config.primaryColor}; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">Bắt đầu chat</button>
+                  <button type="button" id="cancel-btn" style="flex: 1; padding: 8px 16px; border: 1px solid #d1d5db; background: white; color: #374151; border-radius: 6px; cursor: pointer; font-size: 14px;">Huy</button>
+                  <button type="submit" id="start-chat-btn" style="flex: 1; padding: 8px 16px; background: ${config.primaryColor}; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">Bat dau chat</button>
                 </div>
               </form>
             </div>
@@ -134,7 +134,7 @@
             <!-- Message Input -->
             <div id="message-input-area" style="padding: 16px; border-top: 1px solid #e5e7eb; background: white; display: none;">
               <form id="message-form" style="display: flex; gap: 8px;">
-                <input type="text" id="message-input" placeholder="Nhập tin nhắn..." style="flex: 1; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none;">
+                <input type="text" id="message-input" placeholder="Nhap tin nhan..." style="flex: 1; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none;">
                 <button type="submit" style="padding: 8px 12px; background: ${config.primaryColor}; color: white; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="22" y1="2" x2="11" y2="13"></line>

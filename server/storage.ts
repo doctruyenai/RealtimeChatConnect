@@ -68,7 +68,7 @@ export class MemStorage implements IStorage {
       id: this.currentAgentId++,
       email: "agent1@company.com",
       password: "password123",
-      name: "Nguyễn Thị An",
+      name: "Nguyen Thi An",
       isOnline: true,
       createdAt: new Date(),
     };
@@ -77,7 +77,7 @@ export class MemStorage implements IStorage {
       id: this.currentAgentId++,
       email: "agent2@company.com", 
       password: "password123",
-      name: "Trần Văn Bình",
+      name: "Tran Van Binh",
       isOnline: false,
       createdAt: new Date(),
     };
@@ -87,16 +87,16 @@ export class MemStorage implements IStorage {
 
     // Create default form fields
     const defaultFields: Omit<FormField, 'id'>[] = [
-      { fieldName: "customerName", fieldType: "text", label: "Họ và tên", required: true, options: null, order: 1 },
-      { fieldName: "customerPhone", fieldType: "text", label: "Số điện thoại", required: true, options: null, order: 2 },
-      { fieldName: "customerAddress", fieldType: "text", label: "Địa chỉ", required: false, options: null, order: 3 },
-      { fieldName: "requestType", fieldType: "select", label: "Loại yêu cầu", required: false, 
+      { fieldName: "customerName", fieldType: "text", label: "Ho va ten", required: true, options: null, order: 1 },
+      { fieldName: "customerPhone", fieldType: "text", label: "So dien thoai", required: true, options: null, order: 2 },
+      { fieldName: "customerAddress", fieldType: "text", label: "Dia chi", required: false, options: null, order: 3 },
+      { fieldName: "requestType", fieldType: "select", label: "Loai yeu cau", required: false, 
         options: JSON.stringify([
-          { value: "support", label: "Hỗ trợ kỹ thuật" },
-          { value: "sales", label: "Tư vấn bán hàng" },
-          { value: "complaint", label: "Khiếu nại" }
+          { value: "support", label: "Ho tro ky thuat" },
+          { value: "sales", label: "Tu van ban hang" },
+          { value: "complaint", label: "Khieu nai" }
         ]), order: 4 },
-      { fieldName: "content", fieldType: "textarea", label: "Nội dung", required: false, options: null, order: 5 }
+      { fieldName: "content", fieldType: "textarea", label: "Noi dung", required: false, options: null, order: 5 }
     ];
 
     defaultFields.forEach(field => {

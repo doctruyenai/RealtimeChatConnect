@@ -18,7 +18,7 @@ function verifyToken(req: any, res: any, next: any) {
   const token = req.headers.authorization?.split(' ')[1];
   
   if (!token) {
-    return res.status(401).json({ message: "Token không được cung cấp" });
+    return res.status(401).json({ message: "Token khong duoc cung cap" });
   }
 
   try {
@@ -26,7 +26,7 @@ function verifyToken(req: any, res: any, next: any) {
     req.agent = decoded;
     next();
   } catch (error) {
-    return res.status(401).json({ message: "Token không hợp lệ" });
+    return res.status(401).json({ message: "Token khong hop le" });
   }
 }
 
@@ -38,7 +38,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const agent = await storage.getAgentByEmail(email);
       if (!agent || agent.password !== password) {
-        return res.status(401).json({ message: "Email hoặc mật khẩu không đúng" });
+        return res.status(401).json({ message: "Email hoac mat khau khong dung" });
       }
 
       // Update agent status to online
@@ -60,16 +60,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         } 
       });
     } catch (error) {
-      res.status(400).json({ message: "Dữ liệu không hợp lệ" });
+      res.status(400).json({ message: "Du lieu khong hop le" });
     }
   });
 
   app.post("/api/auth/logout", verifyToken, async (req: any, res) => {
     try {
       await storage.updateAgentStatus(req.agent.id, false);
-      res.json({ message: "Đăng xuất thành công" });
+      res.json({ message: "Dang xuat thanh cong" });
     } catch (error) {
-      res.status(500).json({ message: "Lỗi đăng xuất" });
+      res.status(500).json({ message: "Loi dang xuat" });
     }
   });
 
@@ -78,7 +78,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const agent = await storage.getAgent(req.agent.id);
       if (!agent) {
-        return res.status(404).json({ message: "Agent không tồn tại" });
+        return res.status(404).json({ message: "Agent khong ton tai" });
       }
       res.json({ 
         id: agent.id, 
@@ -87,7 +87,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         isOnline: agent.isOnline 
       });
     } catch (error) {
-      res.status(500).json({ message: "Lỗi server" });
+      res.status(500).json({ message: "Loi server" });
     }
   });
 
@@ -97,7 +97,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const fields = await storage.getAllFormFields();
       res.json(fields);
     } catch (error) {
-      res.status(500).json({ message: "Lỗi lấy form fields" });
+      res.status(500).json({ message: "Loi lay form fields" });
     }
   });
 
@@ -122,13 +122,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
           conversationId: conversation.id,
           senderType: "agent",
           senderName: onlineAgent.name,
-          message: "Xin chào! Tôi có thể giúp gì cho bạn?"
+          message: "Xin chao! Toi co the giup gi cho ban?"
         });
       }
 
       res.json(conversation);
     } catch (error) {
-      res.status(400).json({ message: "Dữ liệu không hợp lệ" });
+      res.status(400).json({ message: "Du lieu khong hop le" });
     }
   });
 
@@ -138,7 +138,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const conversations = await storage.getConversationsByAgent(req.agent.id);
       res.json(conversations);
     } catch (error) {
-      res.status(500).json({ message: "Lỗi lấy danh sách cuộc hội thoại" });
+      res.status(500).json({ message: "Loi lay danh sach cuoc hoi thoai" });
     }
   });
 
@@ -148,7 +148,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const conversations = await storage.getAllConversations();
       res.json(conversations);
     } catch (error) {
-      res.status(500).json({ message: "Lỗi lấy danh sách cuộc hội thoại" });
+      res.status(500).json({ message: "Loi lay danh sach cuoc hoi thoai" });
     }
   });
 
@@ -157,13 +157,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const query = req.query.q as string;
       if (!query) {
-        return res.status(400).json({ message: "Vui lòng nhập từ khóa tìm kiếm" });
+        return res.status(400).json({ message: "Vui long nhap tu khoa tim kiem" });
       }
       
       const conversations = await storage.searchConversations(query);
       res.json(conversations);
     } catch (error) {
-      res.status(500).json({ message: "Lỗi tìm kiếm cuộc hội thoại" });
+      res.status(500).json({ message: "Loi tim kiem cuoc hoi thoai" });
     }
   });
 
@@ -174,17 +174,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const conversation = await storage.getConversation(id);
       
       if (!conversation) {
-        return res.status(404).json({ message: "Cuộc hội thoại không tồn tại" });
+        return res.status(404).json({ message: "Cuoc hoi thoai khong ton tai" });
       }
 
       // Check if agent has access to this conversation
       if (conversation.assignedAgentId !== req.agent.id) {
-        return res.status(403).json({ message: "Bạn không có quyền truy cập cuộc hội thoại này" });
+        return res.status(403).json({ message: "Ban khong co quyen truy cap cuoc hoi thoai nay" });
       }
 
       res.json(conversation);
     } catch (error) {
-      res.status(500).json({ message: "Lỗi lấy thông tin cuộc hội thoại" });
+      res.status(500).json({ message: "Loi lay thong tin cuoc hoi thoai" });
     }
   });
 
@@ -195,7 +195,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const messages = await storage.getMessagesByConversation(conversationId);
       res.json(messages);
     } catch (error) {
-      res.status(500).json({ message: "Lỗi lấy tin nhắn" });
+      res.status(500).json({ message: "Loi lay tin nhan" });
     }
   });
 
@@ -225,17 +225,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const { message } = req.body;
 
       if (!message || message.trim() === "") {
-        return res.status(400).json({ message: "Nội dung tin nhắn không được để trống" });
+        return res.status(400).json({ message: "Noi dung tin nhan khong duoc de trong" });
       }
 
       // Check if conversation exists and agent has access
       const conversation = await storage.getConversation(conversationId);
       if (!conversation) {
-        return res.status(404).json({ message: "Cuộc hội thoại không tồn tại" });
+        return res.status(404).json({ message: "Cuoc hoi thoai khong ton tai" });
       }
 
       if (conversation.assignedAgentId !== req.agent.id) {
-        return res.status(403).json({ message: "Bạn không có quyền trả lời cuộc hội thoại này" });
+        return res.status(403).json({ message: "Ban khong co quyen tra loi cuoc hoi thoai nay" });
       }
 
       const newMessage = await storage.createMessage({
@@ -247,7 +247,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       res.json(newMessage);
     } catch (error) {
-      res.status(500).json({ message: "Lỗi gửi tin nhắn" });
+      res.status(500).json({ message: "Loi gui tin nhan" });
     }
   });
 
@@ -259,17 +259,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const conversation = await storage.getConversation(id);
       if (!conversation) {
-        return res.status(404).json({ message: "Cuộc hội thoại không tồn tại" });
+        return res.status(404).json({ message: "Cuoc hoi thoai khong ton tai" });
       }
 
       if (conversation.assignedAgentId !== req.agent.id) {
-        return res.status(403).json({ message: "Bạn không có quyền cập nhật cuộc hội thoại này" });
+        return res.status(403).json({ message: "Ban khong co quyen cap nhat cuoc hoi thoai nay" });
       }
 
       const updated = await storage.updateConversation(id, { status });
       res.json(updated);
     } catch (error) {
-      res.status(500).json({ message: "Lỗi cập nhật cuộc hội thoại" });
+      res.status(500).json({ message: "Loi cap nhat cuoc hoi thoai" });
     }
   });
 

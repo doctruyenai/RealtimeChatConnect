@@ -24,16 +24,16 @@ export default function Login() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("agent", JSON.stringify(data.agent));
       toast({
-        title: "Đăng nhập thành công",
-        description: `Chào mừng ${data.agent.name}!`,
+        title: "Dang nhap thanh cong",
+        description: `Chao mung ${data.agent.name}!`,
       });
       setLocation("/dashboard");
     },
     onError: (error: any) => {
       toast({
         variant: "destructive",
-        title: "Đăng nhập thất bại",
-        description: error.message || "Email hoặc mật khẩu không đúng",
+        title: "Dang nhap that bai",
+        description: error.message || "Email hoac mat khau khong dung",
       });
     },
   });
@@ -43,8 +43,8 @@ export default function Login() {
     if (!email || !password) {
       toast({
         variant: "destructive",
-        title: "Lỗi",
-        description: "Vui lòng nhập đầy đủ thông tin",
+        title: "Loi",
+        description: "Vui long nhap day du thong tin",
       });
       return;
     }
@@ -59,9 +59,9 @@ export default function Login() {
             <MessageCircle className="h-8 w-8 text-white" />
           </div>
           <CardTitle className="text-2xl font-semibold text-gray-900">
-            Hệ Thống Chat Real-time
+            He Thong Chat Real-time
           </CardTitle>
-          <p className="text-gray-600 mt-2">Đăng nhập để truy cập dashboard agent</p>
+          <p className="text-gray-600 mt-2">Dang nhap de truy cap dashboard agent</p>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -85,7 +85,7 @@ export default function Login() {
             
             <div>
               <Label htmlFor="password" className="text-sm font-medium text-gray-700">
-                Mật khẩu
+                Mat khau
               </Label>
               <div className="relative mt-1">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
@@ -106,12 +106,12 @@ export default function Login() {
               className="w-full bg-blue-600 hover:bg-blue-700"
               disabled={loginMutation.isPending}
             >
-              {loginMutation.isPending ? "Đang đăng nhập..." : "Đăng nhập"}
+              {loginMutation.isPending ? "Dang dang nhap..." : "Dang nhap"}
             </Button>
           </form>
 
           <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-600 mb-2">Tài khoản demo:</p>
+            <p className="text-sm text-gray-600 mb-2">Tai khoan demo:</p>
             <div className="text-xs text-gray-500 space-y-1">
               <div>Email: agent1@company.com</div>
               <div>Password: password123</div>
